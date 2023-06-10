@@ -25,6 +25,9 @@ public class Record {
     @Column(name = "contents", nullable = false)
     private String contents; // 기록 내용
 
+    @Column(name = "answer", nullable = false)
+    private String answer; // gpt 답변
+
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "diary_id")
     private Diary diary;

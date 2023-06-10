@@ -8,9 +8,9 @@ import neordinary.oteam.dto.record.*;
 import neordinary.oteam.service.OpenAIService;
 import neordinary.oteam.service.RecordService;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 @Slf4j
 @RestController
@@ -31,16 +31,24 @@ public class RecordController {
     @PostMapping("/api/record")
     public ResponseEntity<ChatGptRes> addRecord(@RequestBody RecordReq req) {
 
-        recordService.addOneRecord(req.getName(), req.getContent());
-
         ChatGptRes chatGptRes = openAIService.chat(new ChatGptReq(req.getContent()));
+
+        recordService.addOneRecord(req.getName(), req.getContent(), chatGptRes.getAnswer());
+
         return ResponseEntity.ok(chatGptRes);
     }
 
-    // 요약 생성
+    // 하루 레코드 요약 생성
     @PostMapping("/api/record/summary")
     public ResponseEntity<SummaryRes> getSummary(@RequestBody SummaryReq req) {
         return ResponseEntity.ok(recordService.getRecordSummary(req.getName()));
     }
+
+    // 하루 레코드, 답변 목록 조회
+    @GetMapping("api/record/list")
+    public ResponseEntity<List<RecordListRes>> getRecordList(@RequestParam String name) {
+        return ResponseEntity.ok(recordService.findRecordList(name));
+    }
+
 
 }

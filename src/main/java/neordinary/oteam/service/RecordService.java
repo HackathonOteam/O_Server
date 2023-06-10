@@ -6,6 +6,7 @@ import neordinary.oteam.domain.record.RecordRepository;
 import neordinary.oteam.dto.chatGpt.ChatGptReq;
 import neordinary.oteam.dto.chatGpt.ChatGptRes;
 import neordinary.oteam.dto.record.DiaryRecordRes;
+import neordinary.oteam.dto.record.RecordListRes;
 import neordinary.oteam.dto.record.SummaryRes;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -43,13 +44,13 @@ public class RecordService {
 
     // 레코드 하나 생성
     @Transactional
-    public void addOneRecord(String name, String contents) {
+    public void addOneRecord(String name, String contents, String answer) {
         Long userId = recordRepository.findUsername(name);
         Long diaryId = recordRepository.findDiaryId(userId);
 
         LocalDateTime createdAt = LocalDateTime.now();
 
-        recordRepository.addUserRecord(createdAt, contents, diaryId);
+        recordRepository.addUserRecord(createdAt, contents, answer, diaryId);
     }
 
     // 요약 생성
@@ -90,5 +91,14 @@ public class RecordService {
 
         // 그리고 감정, 요약, 날짜 보내줘야댕.
         return new SummaryRes(formattedDate, emotionRes.getAnswer(), summaryRes.getAnswer());
+    }
+
+    // 하루 레코드, 답변 목록 조회
+    public List<RecordListRes> findRecordList(String name) {
+        Long userId = recordRepository.findUsername(name);
+        Long diaryId = recordRepository.findDiaryId(userId);
+
+        return null;
+
     }
 }
