@@ -30,7 +30,7 @@ public class DiaryService {
         List<Diary> diaries = diaryRepository.findByUserName(memberName);
 
         return diaries.stream()
-                .filter(diary -> diary.getEmotion().equals("즐거워요") || diary.getEmotion().equals("신나요"))
+                .filter(diary -> diary.getEmotion().equals("ExcitedEmotion") || diary.getEmotion().equals("HappyEmotion"))
                 .collect(Collectors.toList());
     }
 

@@ -66,7 +66,7 @@ public class DiaryController {
     @Tag(name = "diary")
     @ApiOperation(value = "이번달 감정 분석 카드 조회 api", notes = "yearMonth는 yyyy-MM로 보내주시면 됩니다.")
     @GetMapping("/monthly/statistic")
-    public List<EmotionPercentResponseDto> getMonthlyStatistic(@RequestParam("yearMonth") String yearMonth,
+    public EmotionFinalResponseDto getMonthlyStatistic(@RequestParam("yearMonth") String yearMonth,
                                                       @RequestParam("userName") String userName) {
 
         DateTimeFormatter dateTimeFormatter = DateTimeFormatter.ofPattern("yyyy-MM");
@@ -76,13 +76,13 @@ public class DiaryController {
         //log.info("diaries ::::::::::::::::::: " + diaries.get(0).getEmotion() + diaries.get(1).getEmotion());
 
         final Map<String, Integer> emotionCount = new HashMap<String, Integer>() {{
-            put("지루해요", 0);
-            put("놀랐어요", 0);
-            put("화나요", 0);
-            put("즐거워요", 0);
-            put("슬퍼요", 0);
-            put("괜찮아요", 0);
-            put("아파요", 0);
+            put("BoringEmotion", 0);
+            put("SuprisedEmotion", 0);
+            put("AngryEmotion", 0);
+            put("ExcitedEmotion", 0);
+            put("SadEmotion", 0);
+            put("FineEmotion", 0);
+            put("SickEmotion", 0);
         }};
 
         diaries.forEach(diary -> {
@@ -111,7 +111,10 @@ public class DiaryController {
             }
         }
 
-        return emotionPercentResponseDtos;
+        String emotionComment = "즐거운 달이었네요 :)";
+
+        return EmotionFinalResponseDto.from(emotionPercentResponseDtos.get(0), emotionPercentResponseDtos.get(1),
+                emotionPercentResponseDtos.get(2), emotionComment);
     }
 
 }
