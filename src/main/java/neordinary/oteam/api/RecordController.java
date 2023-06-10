@@ -2,9 +2,12 @@ package neordinary.oteam.api;
 
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import neordinary.oteam.dto.chatGpt.ChatGptReq;
+import neordinary.oteam.dto.chatGpt.ChatGptRes;
 import neordinary.oteam.dto.record.DiaryRecordReq;
 import neordinary.oteam.dto.record.DiaryRecordRes;
-import neordinary.oteam.dto.record.RecordRes;
+import neordinary.oteam.dto.record.RecordReq;
+import neordinary.oteam.service.OpenAIService;
 import neordinary.oteam.service.RecordService;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -18,6 +21,8 @@ public class RecordController {
 
     private final RecordService recordService;
 
+    private final OpenAIService openAIService;
+
     // 다이어리 레코드 생성
     @PostMapping("/api/record/diary")
     public ResponseEntity<DiaryRecordRes> addRecordDiary(@RequestBody DiaryRecordReq req) {
@@ -26,6 +31,12 @@ public class RecordController {
 
     // 레코드 하나 생성
     @PostMapping("/api/record")
-    public ResponseEntity<RecordRes>
+    public ResponseEntity<ChatGptRes> addRecord(@RequestBody RecordReq req) {
+
+        recordService.addOneRecord(req.getName(), req.getContent());
+
+        ChatGptRes chatGptRes = openAIService.chat(new ChatGptReq(req.getContent()));
+        return ResponseEntity.ok(chatGptRes);
+    }
 
 }

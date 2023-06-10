@@ -33,4 +33,15 @@ public class RecordService {
 
         return new DiaryRecordRes(recordRepository.findUserTodayDiary(userId, today));
     }
+
+    // 레코드 하나 생성
+    @Transactional
+    public void addOneRecord(String name, String contents) {
+        Long userId = recordRepository.findUsername(name);
+        Long diaryId = recordRepository.findDiaryId(userId);
+
+        LocalDateTime createdAt = LocalDateTime.now();
+
+        recordRepository.addUserRecord(createdAt, contents, diaryId);
+    }
 }
