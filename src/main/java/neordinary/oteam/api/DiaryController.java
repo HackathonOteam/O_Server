@@ -3,11 +3,9 @@ package neordinary.oteam.api;
 import io.swagger.annotations.ApiOperation;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import neordinary.oteam.domain.diary.Diary;
-import neordinary.oteam.dto.diary.DiaryListResponseDto;
-import neordinary.oteam.dto.diary.DiaryResponseDto;
-import neordinary.oteam.dto.diary.EmotionCountResponseDto;
-import neordinary.oteam.dto.diary.EmotionResponseDto;
+import neordinary.oteam.dto.diary.*;
 import neordinary.oteam.global.util.DateTimeUtils;
 import neordinary.oteam.service.DiaryService;
 import org.springframework.http.ResponseEntity;
@@ -16,16 +14,14 @@ import org.springframework.web.bind.annotation.*;
 import java.time.LocalDate;
 import java.time.YearMonth;
 import java.time.format.DateTimeFormatter;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-import java.util.Random;
+import java.util.*;
 import java.util.stream.Collectors;
 
 
 @RestController
 @Tag(name = "diary", description = "기억 API")
 @RequiredArgsConstructor
+@Slf4j
 @RequestMapping("/api/diary")
 public class DiaryController {
 
@@ -70,13 +66,14 @@ public class DiaryController {
     @Tag(name = "diary")
     @ApiOperation(value = "이번달 감정 분석 카드 조회 api", notes = "yearMonth는 yyyy-MM로 보내주시면 됩니다.")
     @GetMapping("/monthly/statistic")
-    public List<EmotionResponseDto> getMonthlyStatistic(@RequestParam("yearMonth") String yearMonth,
+    public List<EmotionPercentResponseDto> getMonthlyStatistic(@RequestParam("yearMonth") String yearMonth,
                                                       @RequestParam("userName") String userName) {
 
         DateTimeFormatter dateTimeFormatter = DateTimeFormatter.ofPattern("yyyy-MM");
         YearMonth date = YearMonth.parse(yearMonth, dateTimeFormatter);
 
         List<Diary> diaries = diaryService.getMonthlyDiary(userName, date);
+        //log.info("diaries ::::::::::::::::::: " + diaries.get(0).getEmotion() + diaries.get(1).getEmotion());
 
         final Map<String, Integer> emotionCount = new HashMap<String, Integer>() {{
             put("지루해요", 0);
@@ -92,19 +89,29 @@ public class DiaryController {
             emotionCount.put(diary.getEmotion(), emotionCount.get(diary.getEmotion()) + 1);
         });
 
-//        return EmotionCountResponseDto.from(
-//                feedbackVOS.size(),
-//                emojiCount.get(1),
-//                emojiCount.get(2),
-//                emojiCount.get(3),
-//                emojiCount.get(4),
-//                emojiCount.get(5),
-//                emojiCount.get(6),
-//                emojiCount.get(7)
-//        );
+        // 값(value)으로 정렬하기 위해 리스트로 변환
+        List<Map.Entry<String, Integer>> entryList = new ArrayList<>(emotionCount.entrySet());
+        entryList.sort(Map.Entry.comparingByValue(Comparator.reverseOrder()));
 
+        // 상위 3개 항목 처리
+        List<EmotionPercentResponseDto> emotionPercentResponseDtos = new ArrayList<>();
+        int count = 0;
+        double percent = 0.0;
+        for (Map.Entry<String, Integer> entry : entryList) {
 
-        return diaries.stream().map(EmotionResponseDto::from).collect(Collectors.toList());
+            System.out.println(entry.getKey() + ": " + entry.getValue());
+
+            percent = (entry.getValue() / (double) diaries.size());
+
+            emotionPercentResponseDtos.add(EmotionPercentResponseDto.from(entry.getKey(), percent));
+
+            count++;
+            if (count == 3) {
+                break;
+            }
+        }
+
+        return emotionPercentResponseDtos;
     }
 
 }
