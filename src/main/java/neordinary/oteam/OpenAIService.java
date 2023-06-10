@@ -10,6 +10,7 @@ import java.util.*;
 public class OpenAIService {
     private final String OPENAI_URL = "https://api.openai.com/v1/chat/completions";
 
+    @Value("${openaiApiKey}")
     private String OPENAI_API_KEY;
 
     public ChatGptRes chat(ChatGptReq chatGptReq) {
