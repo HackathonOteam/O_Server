@@ -7,7 +7,6 @@ import org.springframework.web.bind.annotation.*;
 import java.util.*;
 
 @RestController
-@RequestMapping("/api")
 public class ChatController {
 
     private final OpenAIService openAIService;
@@ -17,7 +16,7 @@ public class ChatController {
         this.openAIService = openAIService;
     }
 
-    @PostMapping("/chat")
+    @PostMapping("/api/chat")
     public ResponseEntity<ChatGptRes> chat(@RequestBody ChatGptReq chatGptReq) {
         return ResponseEntity.ok(openAIService.chat(chatGptReq));
     }
