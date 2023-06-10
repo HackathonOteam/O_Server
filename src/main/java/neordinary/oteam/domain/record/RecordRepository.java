@@ -26,6 +26,7 @@ public interface RecordRepository extends JpaRepository<Record, Long> {
     @Query(value = "select diary_id from dd_diary where user_id=:userId", nativeQuery = true)
     Long findDiaryId(@Param("userId") Long userId);
 
+    // 레코드 하나 생성
     @Modifying(clearAutomatically = true)
     @Query(value = "insert into dd_record(created_at, contents, answer, diary_id) values(:createdAt, :contents, :answer,  :diaryId)", nativeQuery = true)
     void addUserRecord(@Param("createdAt") LocalDateTime createdAt, @Param("contents") String contents, @Param("answer") String answer, @Param("diaryId") Long diaryId);
