@@ -14,4 +14,9 @@ public class HelloController {
         return "Sample!!!!!!!!";
     }
 
+    @GetMapping("/api/sample")
+    public String sampleV2() {
+        return "Sample!!!!!!!!";
+    }
+
 }

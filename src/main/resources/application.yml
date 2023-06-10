@@ -1,0 +1,70 @@
+spring:
+  profiles:
+    active: local
+
+  mvc:
+    pathmatch:
+      # swagger
+      matching-strategy: ant_path_matcher
+#
+#  datasource:
+#    url: jdbc:mysql://teamo.cb8dnyxoekkp.ap-northeast-2.rds.amazonaws.com:3306/teamo
+#    driverClassName: com.mysql.cj.jdbc.Driver
+#    username: 'teamo'
+#    password: 'teamoteamo'
+#  jpa:
+#    database-platform: org.hibernate.dialect.MySQL8Dialect
+#    properties:
+#      hibernate:
+#        format_sql: true
+#        show_sql: true
+#        dialect: org.hibernate.dialect.MySQL8Dialect
+#    hibernate:
+#      ddl-auto: validate
+#    cloud:
+#      gcp:
+#        credentials:
+#          location: file:/path/to/service-account-key.json
+#        project-id: crucial-mender-383111
+
+swagger:
+  url: http://localhost:8080
+  desc: for local usages
+
+---
+
+spring:
+  profiles:
+    active: real
+
+  mvc:
+    pathmatch:
+      # swagger
+      matching-strategy: ant_path_matcher
+#
+#  datasource:
+#    url: jdbc:mysql://teamo.cb8dnyxoekkp.ap-northeast-2.rds.amazonaws.com:3306/teamo
+#    driverClassName: com.mysql.cj.jdbc.Driver
+#    username: 'teamo'
+#    password: 'teamoteamo'
+#  jpa:
+#    database-platform: org.hibernate.dialect.MySQL8Dialect
+#    properties:
+#      hibernate:
+#        format_sql: true
+#        show_sql: true
+#        dialect: org.hibernate.dialect.MySQL8Dialect
+#    hibernate:
+#      ddl-auto: validate
+#  cloud:
+#    gcp:
+#      credentials:
+#        location: file:/path/to/service-account-key.json
+#      project-id: crucial-mender-383111
+
+
+swagger:
+  url: http://teamoo-env.eba-m2b6kunp.ap-northeast-2.elasticbeanstalk.com/
+  desc: for real usages
+  documentation:
+    enabled: true
