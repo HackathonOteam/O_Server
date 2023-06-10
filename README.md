@@ -1,7 +1,7 @@
 # 🔉 타래
 ![tarae](https://github.com/HackathonOteam/O_Server/assets/98451999/024acc33-aa09-4f44-8984-13cb0073cc2a)
 
-### **대화로 뭉치는 기억일기, 타래**
+### **▶️ 대화로 뭉치는 기억일기, 타래**
 
 **치매 환자 또는 노년층이 음성으로**
 <br>**쉽게 하루를 기록하고 추억을 상기할 수 있는 앱, 타래**
@@ -15,7 +15,7 @@
 ### 앱명 : 타래
 
 '실이나 끈 따위를 모은 것' 이라는 뜻으로, 기억의 실마리를 모아 이어주는 서비스가 되겠다는 의미를 담았습니다. 
-
+<br>
 
 ### R&R
 
@@ -28,7 +28,7 @@
 | 개발 | [최지철](https://github.com/jife98) | 📱 iOS 화면 UI 구현, 서버 연동 |
 | 개발 | [곽다은](https://github.com/daeunkwak) | 💻 DB 및 API 구축, 서버 배포 |
 | 개발 | [한호정](https://github.com/hojeong2747) | 🖥️ DB 및 API 구축, 서버 배포 |
-
+<br>
 ### 4th Ne(o)rdinary HACKATHON 목적
 
 ### **💭"Chat GPT"의 API 활용💭** ###
