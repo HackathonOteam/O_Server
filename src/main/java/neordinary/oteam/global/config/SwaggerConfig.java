@@ -44,7 +44,7 @@ public class SwaggerConfig {
                 .servers(getServer(profile, url, desc))
                 .select()
                 .apis(RequestHandlerSelectors.any())
-                .paths(PathSelectors.ant("/api/**"))
+                .paths(PathSelectors.ant("/**"))
                 .build();
     }
 

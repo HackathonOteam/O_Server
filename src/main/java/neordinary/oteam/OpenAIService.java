@@ -1,5 +1,6 @@
 package neordinary.oteam;
 
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.*;
 import org.springframework.stereotype.Service;
@@ -7,6 +8,7 @@ import org.springframework.web.client.RestTemplate;
 import java.util.*;
 
 @Service
+@Slf4j
 public class OpenAIService {
     private final String OPENAI_URL = "https://api.openai.com/v1/chat/completions";
 
@@ -20,6 +22,9 @@ public class OpenAIService {
         HttpHeaders headers = new HttpHeaders();
         headers.setContentType(MediaType.APPLICATION_JSON);
         headers.set("Authorization", "Bearer " + OPENAI_API_KEY);
+
+        log.info("token ::::::::::::::::: " + OPENAI_API_KEY);
+        log.info("header :::::::::::: " + String.valueOf(headers));
 
         // Prepare the system and user messages
         List<Map<String, String>> messages = new ArrayList<>();

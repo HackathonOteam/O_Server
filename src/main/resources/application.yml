@@ -26,7 +26,7 @@ swagger:
   url: http://localhost:8080
   desc: for local usages
 
-openaiApiKey: ${OPENAI_API_KEY}
+openaiApiKey: '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'
 
 ---
 
@@ -55,9 +55,9 @@ spring:
       ddl-auto: validate
 
 swagger:
-  url: http://teamoo-env.eba-m2b6kunp.ap-northeast-2.elasticbeanstalk.com/
+  url: http://dodam-env.eba-w695d65w.ap-northeast-2.elasticbeanstalk.com/
   desc: for real usages
   documentation:
     enabled: true
 
-openaiApiKey: ${OPENAI_API_KEY}
+openaiApiKey: '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'

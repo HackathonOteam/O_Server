@@ -16,7 +16,7 @@ public class ChatController {
         this.openAIService = openAIService;
     }
 
-    @PostMapping("/api/chat")
+    @PostMapping("/chat")
     public ResponseEntity<ChatGptRes> chat(@RequestBody ChatGptReq chatGptReq) {
         return ResponseEntity.ok(openAIService.chat(chatGptReq));
     }
