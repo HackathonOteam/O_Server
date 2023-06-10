@@ -34,7 +34,7 @@
 
 ### 4th Ne(o)rdinary HACKATHON 목적
 
-### **💭"Chat GPT"의 API 활용💭** ###
+### **💭 "Chat GPT"의 API 활용 💭** ###
 
 
 <br>
