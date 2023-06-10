@@ -8,10 +8,8 @@ import java.util.*;
 
 @Service
 public class OpenAIService {
-//    private final String OPENAI_API_KEY = "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";
     private final String OPENAI_URL = "https://api.openai.com/v1/chat/completions";
 
-    @Value("${openai.api.key}")
     private String OPENAI_API_KEY;
 
     public ChatGptRes chat(ChatGptReq chatGptReq) {
