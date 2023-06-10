@@ -4,9 +4,7 @@ import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import neordinary.oteam.dto.chatGpt.ChatGptReq;
 import neordinary.oteam.dto.chatGpt.ChatGptRes;
-import neordinary.oteam.dto.record.DiaryRecordReq;
-import neordinary.oteam.dto.record.DiaryRecordRes;
-import neordinary.oteam.dto.record.RecordReq;
+import neordinary.oteam.dto.record.*;
 import neordinary.oteam.service.OpenAIService;
 import neordinary.oteam.service.RecordService;
 import org.springframework.http.ResponseEntity;
@@ -37,6 +35,12 @@ public class RecordController {
 
         ChatGptRes chatGptRes = openAIService.chat(new ChatGptReq(req.getContent()));
         return ResponseEntity.ok(chatGptRes);
+    }
+
+    // 요약 생성
+    @PostMapping("/api/record/summary")
+    public ResponseEntity<SummaryRes> getSummary(@RequestBody SummaryReq req) {
+        return ResponseEntity.ok(recordService.getRecordSummary(req.getName()));
     }
 
 }

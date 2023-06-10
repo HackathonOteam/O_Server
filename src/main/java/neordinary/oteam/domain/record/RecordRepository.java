@@ -7,6 +7,7 @@ import org.springframework.data.repository.query.Param;
 
 import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.util.List;
 
 public interface RecordRepository extends JpaRepository<Record, Long> {
 
@@ -28,4 +29,11 @@ public interface RecordRepository extends JpaRepository<Record, Long> {
     @Query(value = "insert into dd_record(created_at, contents, diary_id) values(:createdAt, :contents, :diaryId)", nativeQuery = true)
     void addUserRecord(@Param("createdAt") LocalDateTime createdAt, @Param("contents") String contents, @Param("diaryId") Long diaryId);
 
+    // 요약 생성 (오늘 기록한 레코드 데이터 모두 반환)
+    @Query(value = "select contents from dd_record where diary_id=:diaryId and DATE(created_at)=:today", nativeQuery = true)
+    List<String> findTodayContents(@Param("diaryId") Long diaryId, @Param("today") LocalDate today);
+
+    @Modifying(clearAutomatically = true)
+    @Query(value = "update dd_diary set summary = :summary, emotion = :emotion where diary_id=:diaryId", nativeQuery = true)
+    void updateTodayDiary(@Param("diaryId") Long diaryId, @Param("emotion") String emotion, @Param("summary") String summary);
 }
