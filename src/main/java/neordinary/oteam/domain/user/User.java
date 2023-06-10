@@ -33,10 +33,10 @@ public class User{
     @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<Diary> diaries = new ArrayList<>();
 
-    public static User create(String userName) {
+    public static User create(String name) {
 
         return User.builder()
-                .name(userName)
+                .name(name)
                 .createdAt(LocalDateTime.now())
                 .build();
     }
