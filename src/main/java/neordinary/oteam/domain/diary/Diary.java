@@ -3,10 +3,13 @@ package neordinary.oteam.domain.diary;
 import com.fasterxml.jackson.databind.ser.Serializers;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
+import neordinary.oteam.domain.record.Record;
 import neordinary.oteam.domain.user.User;
 
 import javax.persistence.*;
 import java.time.LocalDateTime;
+import java.util.ArrayList;
+import java.util.List;
 
 @Getter
 @NoArgsConstructor
@@ -34,4 +37,8 @@ public class Diary{
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "user_id")
     private User user;
+
+    @OneToMany(mappedBy = "diary", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<Record> records = new ArrayList<>();
+
 }
