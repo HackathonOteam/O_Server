@@ -18,6 +18,7 @@ import java.util.List;
 @RestController
 @Tag(name = "record", description = "기록 API")
 @RequiredArgsConstructor
+@RequestMapping("/api/record")
 public class RecordController {
 
     private final RecordService recordService;
@@ -27,7 +28,7 @@ public class RecordController {
     // 다이어리 레코드 생성
     @Tag(name = "record")
     @ApiOperation(value = "다이어리 레코드 생성 api")
-    @PostMapping("/api/record/diary")
+    @PostMapping("/diary")
     public ResponseEntity<DiaryRecordRes> addRecordDiary(@RequestBody DiaryRecordReq req) {
         return ResponseEntity.ok(recordService.addTodayDiary(req.getName()));
     }
@@ -35,7 +36,7 @@ public class RecordController {
     // 레코드 하나 생성
     @Tag(name = "record")
     @ApiOperation(value = "레코드 하나 생성 api")
-    @PostMapping("/api/record")
+    @PostMapping("")
     public ResponseEntity<ChatGptRes> addRecord(@RequestBody RecordReq req) {
 
         ChatGptRes chatGptRes = openAIService.chat(new ChatGptReq(req.getContent()));
@@ -48,7 +49,7 @@ public class RecordController {
     // 하루 레코드 요약 생성
     @Tag(name = "record")
     @ApiOperation(value = "하루 레코드 요약 생성 api")
-    @PostMapping("/api/record/summary")
+    @PostMapping("/summary")
     public ResponseEntity<SummaryRes> getSummary(@RequestBody SummaryReq req) {
         return ResponseEntity.ok(recordService.getRecordSummary(req.getName()));
     }
@@ -56,7 +57,7 @@ public class RecordController {
     // 하루 레코드, 답변 목록 조회
     @Tag(name = "record")
     @ApiOperation(value = "하루 레코드, 답변 목록 조회 api")
-    @GetMapping("api/record/list")
+    @GetMapping("/list")
     public ResponseEntity<List<RecordListRes>> getRecordList(@RequestParam String name) {
         return ResponseEntity.ok(recordService.findRecordList(name));
     }
