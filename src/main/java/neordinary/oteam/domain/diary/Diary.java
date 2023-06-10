@@ -7,6 +7,7 @@ import neordinary.oteam.domain.record.Record;
 import neordinary.oteam.domain.user.User;
 
 import javax.persistence.*;
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
@@ -20,10 +21,13 @@ public class Diary{
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "diary_id")
-    private Long diary_id;
+    private Long diaryId;
 
     @Column(name = "created_at", nullable = false)
     private LocalDateTime createdAt; // 등록 일자
+
+    @Column(name = "diary_date", columnDefinition = "DATE", nullable = false)
+    private LocalDate diaryDate;
 
     @Column(name = "summary", nullable = false)
     private String summary; // 요약 내용
