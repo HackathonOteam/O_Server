@@ -1,5 +1,5 @@
 # 🔉 타래
-![tarae](https://github.com/HackathonOteam/O_Server/assets/98451999/024acc33-aa09-4f44-8984-13cb0073cc2a)
+![간지나는 썸네일](https://github.com/HackathonOteam/O_Server/assets/98451999/07de36be-7f0b-41ce-b829-144506a4042e)
 
 ### **▶️ 대화로 뭉치는 기억일기, 타래**
 
@@ -112,3 +112,12 @@
 <br>
 
 ## 📄 ER Diagram
+
+
+<br>
+
+## 🎨 디자인 무드보드
+
+![디자인가이드 설명](https://github.com/HackathonOteam/O_Server/assets/98451999/b502bb3d-2d65-474a-ba81-07ea75289bda)
+
+
