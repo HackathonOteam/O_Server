@@ -30,14 +30,14 @@ public class DiaryController {
     @Tag(name = "diary")
     @ApiOperation(value = "기억해야 할 것 리스트 조회 api", notes = "2023-06-11 형태로 주시면 됩니다")
     @GetMapping("")
-    public ResponseEntity<DiaryListResponseDto> getHomeDiaryList(@RequestParam("memberName") String memberName,
+    public ResponseEntity<DiaryListResponseDto> getHomeDiaryList(@RequestParam("userName") String userName,
                                                                 @RequestParam("today") String date) {
 
         final LocalDate today = DateTimeUtils.stringToLocalDate(date);
 
-        Diary yearAgoDiary = diaryService.getYearAgo(memberName, today);
-        List<Diary> positiveDiaryList = diaryService.getPositiveDiary(memberName, today);
-        List<Diary> anniversaryDiaryList = diaryService.getAnniversaryDiary(memberName, today);
+        Diary yearAgoDiary = diaryService.getYearAgo(userName, today);
+        List<Diary> positiveDiaryList = diaryService.getPositiveDiary(userName, today);
+        List<Diary> anniversaryDiaryList = diaryService.getAnniversaryDiary(userName, today);
 
         Random random = new Random();
         int poistiveIdx = random.nextInt(positiveDiaryList.size());
