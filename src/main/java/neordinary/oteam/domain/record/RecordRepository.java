@@ -20,7 +20,7 @@ public interface RecordRepository extends JpaRepository<Record, Long> {
     @Query(value = "insert into dd_diary(created_at, user_id) values(:createdAt, :userId)", nativeQuery = true)
     void addUserTodayDiary(@Param("createdAt") LocalDateTime createdAt, @Param("userId") Long userId);
 
-    @Query(value = "select count(*) from dd_diary where user_id=:userId and DATE(created_at)=:today", nativeQuery = true) // 오늘 조건 추가해야지 바보야~
+    @Query(value = "select count(*) from dd_diary where user_id=:userId and DATE(created_at)=:today", nativeQuery = true)
     Integer findUserTodayDiary(@Param("userId") Long userId, @Param("today") LocalDate today);
 
     @Query(value = "select diary_id from dd_diary where user_id=:userId", nativeQuery = true)
@@ -38,6 +38,7 @@ public interface RecordRepository extends JpaRepository<Record, Long> {
     @Query(value = "update dd_diary set summary = :summary, emotion = :emotion where diary_id=:diaryId", nativeQuery = true)
     void updateTodayDiary(@Param("diaryId") Long diaryId, @Param("emotion") String emotion, @Param("summary") String summary);
 
+    // 하루 레코드, 답변 목록 조회
     @Query(value = "select DISTINCT new neordinary.oteam.dto.record.RecordListRes(r.contents, r.answer) from Record r where r.diary.id=:diaryId order by r.createdAt ")
     List<RecordListRes> findUserRecordList(@Param("diaryId") Long diaryId);
 
