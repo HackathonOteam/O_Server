@@ -59,7 +59,7 @@ public class RecordService {
         Long userId = recordRepository.findUsername(name);
         Long diaryId = recordRepository.findDiaryId(userId);
 
-        // name으로 오늘에 해당하는 record 값 다 가져와서 contents를 합쳐.
+        // name 으로 오늘에 해당하는 record 값 다 가져와서 contents 합치기
         LocalDate today = LocalDate.now();
         List<String> list = recordRepository.findTodayContents(diaryId, today);
         String todayContents = String.join(" ", list);
@@ -68,7 +68,7 @@ public class RecordService {
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy.MM.dd");
         String formattedDate = today.format(formatter);
 
-        // 그리고 gpt 호출해서 요약해달라구 해. 글자수도 세서 호출해야됑. 글자수 제한 두고 친절하게 감정도 알려줘야함.
+        // 글자수 세고, 제한값 설정
         Integer contentsLength = todayContents.length();
         Integer summaryMax;
         if (contentsLength < 50) {
@@ -81,15 +81,16 @@ public class RecordService {
             summaryMax = 200;
         }
 
-        String emotionCondition = "나는 오늘 이런 하루를 보냈어. " + todayContents + "이 문장을 지루해요, 놀랐어요, 화나요, 즐거워요, 슬퍼요, 괜찮아요, 아파요, 좋지 않아요, 신나요 중 하나로만 표현해줘. 꼭 이 중 한 단어로 보내줘. 더 말 하지마.";
+        // gpt 호출해 요약
+        String emotionCondition = "나는 오늘 이런 하루를 보냈어. " + todayContents + "이 문장을 AngryEmotion, BadEmotion, BoringEmotion, ExcitedEmotion, FineEmotion, HappyEmotion, SadEmotion, SickEmotion, SuprisedEmotion 중 하나로만 표현해줘. 꼭 이 중 한 단어로 보내줘. 더 말 하지말고 마지막에 마침표 찍지마.";
         String summaryCondition = "나는 오늘 이런 하루를 보냈어. " + todayContents + "이 내용을 " + summaryMax + "자 내외로 요약해줘. 나한테 친절하고 다정한 말투로 알려줘. " + name + "님은 으로 시작해서 ~인 하루를 보냈어요. 로 끝나도록 답변해줘.";
         ChatGptRes emotionRes = openAIService.chat(new ChatGptReq(emotionCondition));
         ChatGptRes summaryRes = openAIService.chat(new ChatGptReq(summaryCondition));
 
-        // ++ 그리구 저장해야지 diary DB에.. 아 이거 개느릴 거 같은데.. ㅎ -> 일단 되나 보고 저장하기
+        // diaryDB 저장
         recordRepository.updateTodayDiary(diaryId, emotionRes.getAnswer(), summaryRes.getAnswer());
 
-        // 그리고 감정, 요약, 날짜 보내줘야댕.
+        // 감정, 요약, 날짜 반환
         return new SummaryRes(formattedDate, emotionRes.getAnswer(), summaryRes.getAnswer());
     }
 
