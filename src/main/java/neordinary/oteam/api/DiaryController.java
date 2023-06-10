@@ -6,15 +6,18 @@ import lombok.RequiredArgsConstructor;
 import neordinary.oteam.domain.diary.Diary;
 import neordinary.oteam.dto.diary.DiaryListResponseDto;
 import neordinary.oteam.dto.diary.DiaryResponseDto;
+import neordinary.oteam.dto.diary.EmotionResponseDto;
 import neordinary.oteam.global.util.DateTimeUtils;
 import neordinary.oteam.service.DiaryService;
-import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.time.LocalDate;
+import java.time.YearMonth;
+import java.time.format.DateTimeFormatter;
 import java.util.List;
 import java.util.Random;
+import java.util.stream.Collectors;
 
 
 @RestController
@@ -45,6 +48,20 @@ public class DiaryController {
                 DiaryResponseDto.from(yearAgoDiary),
                 DiaryResponseDto.from(positiveDiaryList.get(poistiveIdx)),
                 DiaryResponseDto.from(anniversaryDiaryList.get(anniversaryIdx))));
+    }
+
+
+    @Tag(name = "diary")
+    @ApiOperation(value = "이번달 캘린더 감정 조회 api", notes = "yearMonth는 yyyy-MM로 보내주시면 됩니다.")
+    @GetMapping("/monthly")
+    public List<EmotionResponseDto> getMonthlyEmotion(@RequestParam("yearMonth") String yearMonth,
+                                                      @RequestParam("userName") String userName) {
+
+        DateTimeFormatter dateTimeFormatter = DateTimeFormatter.ofPattern("yyyy-MM");
+        YearMonth date = YearMonth.parse(yearMonth, dateTimeFormatter);
+
+        List<Diary> diaries = diaryService.getMonthlyDiary(userName, date);
+        return diaries.stream().map(EmotionResponseDto::from).collect(Collectors.toList());
     }
 
 }

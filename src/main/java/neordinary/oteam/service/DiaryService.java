@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
 import java.time.LocalDate;
+import java.time.YearMonth;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -41,6 +42,11 @@ public class DiaryService {
         return diaries.stream()
                 .filter(this::isAnniversary)
                 .collect(Collectors.toList());
+    }
+
+    public List<Diary> getMonthlyDiary(String userName, YearMonth date) {
+
+        return diaryRepository.findMonthlyDiary(userName, date);
     }
 
     private boolean isAnniversary(Diary diary) {
