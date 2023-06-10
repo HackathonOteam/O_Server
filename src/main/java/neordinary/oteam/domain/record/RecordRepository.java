@@ -1,5 +1,6 @@
 package neordinary.oteam.domain.record;
 
+import neordinary.oteam.dto.record.RecordListRes;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
@@ -36,4 +37,8 @@ public interface RecordRepository extends JpaRepository<Record, Long> {
     @Modifying(clearAutomatically = true)
     @Query(value = "update dd_diary set summary = :summary, emotion = :emotion where diary_id=:diaryId", nativeQuery = true)
     void updateTodayDiary(@Param("diaryId") Long diaryId, @Param("emotion") String emotion, @Param("summary") String summary);
+
+    @Query(value = "select DISTINCT new neordinary.oteam.dto.record.RecordListRes(r.contents, r.answer) from Record r where r.diary.id=:diaryId order by r.createdAt ")
+    List<RecordListRes> findUserRecordList(@Param("diaryId") Long diaryId);
+
 }

@@ -98,7 +98,7 @@ public class RecordService {
         Long userId = recordRepository.findUsername(name);
         Long diaryId = recordRepository.findDiaryId(userId);
 
-        return null;
+        return recordRepository.findUserRecordList(diaryId);
 
     }
 }
