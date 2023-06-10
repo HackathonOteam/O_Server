@@ -28,6 +28,10 @@ public class UserController {
     public ResponseEntity<UserCreateResponseDto> createUser(@RequestBody UserCreateRequestDto req){
 
         User user = userService.create(req.getName());
-        return new ResponseEntity<>(UserCreateResponseDto.create(req.getName()), HttpStatus.CREATED);
+        UserCreateResponseDto res = UserCreateResponseDto.create(user.getName());
+        return new ResponseEntity<>(res, HttpStatus.CREATED);
+//        return new ResponseEntity<>(UserCreateResponseDto.create(req.getName()), HttpStatus.CREATED);
     }
+
+
 }
