@@ -1,10 +1,11 @@
-package neordinary.oteam;
+package neordinary.oteam.api;
 
+import neordinary.oteam.dto.chatGpt.ChatGptReq;
+import neordinary.oteam.dto.chatGpt.ChatGptRes;
+import neordinary.oteam.service.OpenAIService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-
-import java.util.*;
 
 @RestController
 public class ChatController {
@@ -16,7 +17,7 @@ public class ChatController {
         this.openAIService = openAIService;
     }
 
-    @PostMapping("/chat")
+    @PostMapping("/api/chat")
     public ResponseEntity<ChatGptRes> chat(@RequestBody ChatGptReq chatGptReq) {
         return ResponseEntity.ok(openAIService.chat(chatGptReq));
     }

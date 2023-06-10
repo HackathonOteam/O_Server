@@ -1,6 +1,8 @@
-package neordinary.oteam;
+package neordinary.oteam.service;
 
 import lombok.extern.slf4j.Slf4j;
+import neordinary.oteam.dto.chatGpt.ChatGptReq;
+import neordinary.oteam.dto.chatGpt.ChatGptRes;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.*;
 import org.springframework.stereotype.Service;

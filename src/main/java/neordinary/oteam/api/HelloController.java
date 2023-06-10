@@ -1,4 +1,4 @@
-package neordinary.oteam;
+package neordinary.oteam.api;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
