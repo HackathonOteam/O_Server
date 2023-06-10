@@ -1,4 +1,5 @@
-# 타래
+# 🔉 타래
+![tarae](https://github.com/HackathonOteam/O_Server/assets/98451999/024acc33-aa09-4f44-8984-13cb0073cc2a)
 
 ### **대화로 뭉치는 기억일기, 타래**
 
@@ -30,7 +31,7 @@
 
 ### 4th Ne(o)rdinary HACKATHON 목적
 
-**📍"Chat GPT"의 API 활용📍**
+### **💭"Chat GPT"의 API 활용💭** ###
 
 
 <br>
@@ -107,4 +108,4 @@
 
 <br>
 
-## ER Diagram
+## 📄 ER Diagram
