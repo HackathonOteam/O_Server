@@ -2,6 +2,7 @@ package neordinary.oteam.domain.record;
 
 import lombok.Getter;
 import lombok.NoArgsConstructor;
+import neordinary.oteam.domain.diary.Diary;
 import neordinary.oteam.domain.user.User;
 
 import javax.persistence.*;
@@ -25,6 +26,10 @@ public class Record {
     private String contents; // 기록 내용
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "user_id")
-    private User user;
+    @JoinColumn(name = "diary_id")
+    private Diary diary;
+
+//    @ManyToOne(fetch = FetchType.LAZY)
+//    @JoinColumn(name = "user_id")
+//    private User user;
 }

@@ -1,5 +1,6 @@
 package neordinary.oteam.domain.diary;
 
+import com.fasterxml.jackson.databind.ser.Serializers;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import neordinary.oteam.domain.user.User;
@@ -11,7 +12,7 @@ import java.time.LocalDateTime;
 @NoArgsConstructor
 @Table(name = "DD_DIARY")
 @Entity
-public class Diary {
+public class Diary{
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -27,8 +28,8 @@ public class Diary {
     @Column(name = "emotion", nullable = false)
     private String emotion; // 감정
 
-    @Column(name = "agree_marketing")
-    private Boolean agreeMarketing; // 기념일 여부
+    @Column(name = "is_anniversary")
+    private Boolean isAnniversary; // 기념일 여부
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "user_id")
