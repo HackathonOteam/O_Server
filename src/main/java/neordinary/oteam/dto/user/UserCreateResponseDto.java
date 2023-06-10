@@ -16,11 +16,11 @@ public class UserCreateResponseDto {
 
     @ApiModelProperty(value = "유저 이름")
     @NotNull
-    private String userName;
+    private String name;
 
-    public static UserCreateResponseDto create(String userName) {
+    public static UserCreateResponseDto create(String name) {
         return UserCreateResponseDto.builder()
-                .userName(userName)
+                .name(name)
                 .build();
     }
 }

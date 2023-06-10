@@ -13,5 +13,5 @@ import lombok.NoArgsConstructor;
 @ApiModel(value = "유저 생성 요청 객체")
 public class UserCreateRequestDto {
 
-    private String userName;
+    private String name;
 }
