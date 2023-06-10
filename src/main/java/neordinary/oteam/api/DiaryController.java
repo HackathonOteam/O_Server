@@ -6,6 +6,7 @@ import lombok.RequiredArgsConstructor;
 import neordinary.oteam.domain.diary.Diary;
 import neordinary.oteam.dto.diary.DiaryListResponseDto;
 import neordinary.oteam.dto.diary.DiaryResponseDto;
+import neordinary.oteam.dto.diary.EmotionCountResponseDto;
 import neordinary.oteam.dto.diary.EmotionResponseDto;
 import neordinary.oteam.global.util.DateTimeUtils;
 import neordinary.oteam.service.DiaryService;
@@ -15,7 +16,9 @@ import org.springframework.web.bind.annotation.*;
 import java.time.LocalDate;
 import java.time.YearMonth;
 import java.time.format.DateTimeFormatter;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.Random;
 import java.util.stream.Collectors;
 
@@ -61,6 +64,46 @@ public class DiaryController {
         YearMonth date = YearMonth.parse(yearMonth, dateTimeFormatter);
 
         List<Diary> diaries = diaryService.getMonthlyDiary(userName, date);
+        return diaries.stream().map(EmotionResponseDto::from).collect(Collectors.toList());
+    }
+
+    @Tag(name = "diary")
+    @ApiOperation(value = "이번달 감정 분석 카드 조회 api", notes = "yearMonth는 yyyy-MM로 보내주시면 됩니다.")
+    @GetMapping("/monthly/statistic")
+    public List<EmotionResponseDto> getMonthlyStatistic(@RequestParam("yearMonth") String yearMonth,
+                                                      @RequestParam("userName") String userName) {
+
+        DateTimeFormatter dateTimeFormatter = DateTimeFormatter.ofPattern("yyyy-MM");
+        YearMonth date = YearMonth.parse(yearMonth, dateTimeFormatter);
+
+        List<Diary> diaries = diaryService.getMonthlyDiary(userName, date);
+
+        final Map<String, Integer> emotionCount = new HashMap<String, Integer>() {{
+            put("지루해요", 0);
+            put("놀랐어요", 0);
+            put("화나요", 0);
+            put("즐거워요", 0);
+            put("슬퍼요", 0);
+            put("괜찮아요", 0);
+            put("아파요", 0);
+        }};
+
+        diaries.forEach(diary -> {
+            emotionCount.put(diary.getEmotion(), emotionCount.get(diary.getEmotion()) + 1);
+        });
+
+//        return EmotionCountResponseDto.from(
+//                feedbackVOS.size(),
+//                emojiCount.get(1),
+//                emojiCount.get(2),
+//                emojiCount.get(3),
+//                emojiCount.get(4),
+//                emojiCount.get(5),
+//                emojiCount.get(6),
+//                emojiCount.get(7)
+//        );
+
+
         return diaries.stream().map(EmotionResponseDto::from).collect(Collectors.toList());
     }
 
