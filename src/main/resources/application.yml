@@ -55,7 +55,7 @@ spring:
       ddl-auto: validate
 
 swagger:
-  url: http://tarae-env.eba-uepb7id2.ap-northeast-2.elasticbeanstalk.com/
+  url: http://tarae-env-1.eba-uepb7id2.ap-northeast-2.elasticbeanstalk.com/
   desc: for real usages
   documentation:
     enabled: true
