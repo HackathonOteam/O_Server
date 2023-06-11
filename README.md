@@ -1,5 +1,5 @@
 # 🔉 타래
-![tarae](https://github.com/HackathonOteam/O_Server/assets/98451999/024acc33-aa09-4f44-8984-13cb0073cc2a)
+![간지나는 썸네일](https://github.com/HackathonOteam/O_Server/assets/98451999/07de36be-7f0b-41ce-b829-144506a4042e)
 
 ### **▶️ 대화로 뭉치는 기억일기, 타래**
 
@@ -44,7 +44,7 @@
 
 ### **1️⃣ 시장 분석** 
 
-📍 평균 실종 중 정보 양극화와 인구 양극화에 집중하여, '디지털 소외 계층의 노인들'을 고객으로 선정하였습니다. 
+🔔 평균 실종 중 정보 양극화와 인구 양극화에 집중하여, '디지털 소외 계층의 노인들'을 고객으로 선정하였습니다. 
 
 **1. 정보 양극화**
 - IT 환경이 급변하는 상황 속에 고령 인구가 대표적인 디지털 소외 계층으로 주목
@@ -62,7 +62,7 @@
 
 ### **2️⃣ 고객 분석** 
 
-📍 치매 환자와 그 가족의 고통에 주목하여 일기/추억의 리마인드 기능을 기획
+🔔 치매 환자와 그 가족의 고통에 주목하여 일기/추억의 리마인드 기능을 기획
 
 **1. 니즈**
 - 고령층과 IT 환경 사이의 장벽을 음성 변환 기능과 Chat GPT의 요약 기능으로 해결
@@ -81,6 +81,8 @@
 - Solutions
     - 일기 대신 기록
     - 추억 리마인드
+
+<br>
 
 ### **3️⃣ 사업성** 
 - 앱 자체 수익(앱 내 광고 등)은 추구하지 않고, 고령 인구 소비 행태 등 빅데이터를 판대하거나 서비스 자체를 대기업에 매각할 수 있습니다.
@@ -111,4 +113,44 @@
 
 <br>
 
+## :computer: Technology
+
+- iOS
+    - ![Xcode](https://img.shields.io/badge/Xcode-007ACC?style=flat-square&logo=Xcode&logoColor=white)
+      ![Swift](https://img.shields.io/badge/Swift-F54A2A?style=flat-square&logo=swift&logoColor=white)
+    - ![UIkit](https://img.shields.io/badge/UIkit-2396F3?style=flat-square&logo=swift&logoColor=white)
+      ![AlamoFire](https://img.shields.io/badge/Alamofire-DB5C3F?style=flat-square&logo=swift&logoColor=white)
+- Server
+    - ![IntelliJ IDEA](https://img.shields.io/badge/IntelliJ%20IDEA-000000.svg?style=flat-square&logo=intellij-idea&logoColor=white)
+      ![Java](https://img.shields.io/badge/Java-%23ED8B00.svg?style=flat-square&logo=Java&logoColor=white)
+      ![Springboot](https://img.shields.io/badge/Springboot-6DB33F?style=flat-square&logo=springboot&logoColor=white)
+      ![Shell Script](https://img.shields.io/badge/Shell_Script-%23121011.svg?style=flat-square&logo=gnu-bash&logoColor=white)
+      ![Gradle](https://img.shields.io/badge/Gradle-02303A.svg?style=flat-square&logo=Gradle&logoColor=white)
+      ![Swagger](https://img.shields.io/badge/-Swagger-%23Clojure?style=flat-square&logo=swagger&logoColor=white)
+    - ![Spring Data JPA](https://img.shields.io/badge/Spring%20Data%20JPA-6DB33F?style=flat-square&logo=spring&logoColor=white)
+      ![QueryDSL](https://img.shields.io/badge/QueryDSL-007ACC?style=flat-square&logo=kotlin&logoColor=white)
+    - ![MySQL](https://img.shields.io/badge/MySQL-%2300f.svg?style=flat-square&logo=mysql&logoColor=white)
+      ![RDS](https://img.shields.io/badge/AWS%20RDS-527FFF?style=flat-square&logo=Amazon%20RDS&logoColor=white)
+    - ![GitHub Actions](https://img.shields.io/badge/Github%20Actions-%232671E5.svg?style=flat-square&logo=githubactions&logoColor=white)
+      ![EC2](https://img.shields.io/badge/AWS%20EC2-FF9900?style=flat-square&logo=Amazon%20EC2&logoColor=white)
+      ![Elastic Beanstalk](https://img.shields.io/badge/Elastic%20Beanstalk-232F3E?style=flat-square&logo=Amazon-AWS&logoColor=white)
+      ![Nginx](https://img.shields.io/badge/Nginx-%23009639?style=flat-square&logo=nginx&logoColor=white)
+- Co-working Tool
+    - ![Notion](https://img.shields.io/badge/Notion-%23000000.svg?style=flat-square&logo=notion&logoColor=white)
+      ![Postman](https://img.shields.io/badge/Postman-FF6C37?style=flat-square&logo=postman&logoColor=white)
+
+<br>
+
 ## 📄 ER Diagram
+
+<img width="418" alt="KakaoTalk_20230611_085909443" src="https://github.com/HackathonOteam/O_Server/assets/98451999/e189f6a5-4eb6-4872-9687-b741b177b187">
+
+
+<br>
+<br>
+
+## 🎨 디자인 무드보드
+
+![디자인가이드 설명](https://github.com/HackathonOteam/O_Server/assets/98451999/b502bb3d-2d65-474a-ba81-07ea75289bda)
+
+
