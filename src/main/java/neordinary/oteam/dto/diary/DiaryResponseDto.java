@@ -32,7 +32,7 @@ public class DiaryResponseDto {
 
     public static DiaryResponseDto from(Diary diary) {
         return new DiaryResponseDtoBuilder()
-                .date(LocalDate.from(diary.getCreatedAt()))
+                .date(LocalDate.from(diary.getDiaryDate()))
                 .emotion(diary.getEmotion())
                 .contents(diary.getSummary())
                 .build();

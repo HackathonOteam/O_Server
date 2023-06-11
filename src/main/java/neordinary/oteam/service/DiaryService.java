@@ -1,6 +1,7 @@
 package neordinary.oteam.service;
 
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import neordinary.oteam.domain.diary.Diary;
 import neordinary.oteam.domain.diary.DiaryRepository;
 import org.springframework.stereotype.Service;
@@ -14,12 +15,14 @@ import java.util.stream.Collectors;
 @Transactional
 @Service
 @RequiredArgsConstructor
+@Slf4j
 public class DiaryService {
 
     private final DiaryRepository diaryRepository;
 
     // 1년 전 오늘
     public Diary getYearAgo(String memberName, LocalDate date) {
+        log.info("1 year ago :::::: " + date.minusYears(1));
 
         return diaryRepository.findYearAgo(memberName, date.minusYears(1));
     }
