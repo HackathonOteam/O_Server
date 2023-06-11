@@ -82,6 +82,8 @@
     - 일기 대신 기록
     - 추억 리마인드
 
+<br>
+
 ### **3️⃣ 사업성** 
 - 앱 자체 수익(앱 내 광고 등)은 추구하지 않고, 고령 인구 소비 행태 등 빅데이터를 판대하거나 서비스 자체를 대기업에 매각할 수 있습니다.
 - 시중 일기 어플과 비교했을 때, 사용법이 간단하고 고령층을 겨냥한 주요 기능을 통해 니치 마켓을 선점할 수 있습니다.
@@ -131,13 +133,17 @@
       ![RDS](https://img.shields.io/badge/AWS%20RDS-527FFF?style=flat-square&logo=Amazon%20RDS&logoColor=white)
     - ![GitHub Actions](https://img.shields.io/badge/Github%20Actions-%232671E5.svg?style=flat-square&logo=githubactions&logoColor=white)
       ![EC2](https://img.shields.io/badge/AWS%20EC2-FF9900?style=flat-square&logo=Amazon%20EC2&logoColor=white)
+      ![Elastic Beanstalk](https://img.shields.io/badge/Elastic%20Beanstalk-232F3E?style=for-the-badge&logo=Amazon-AWS&logoColor=white)
       ![Nginx](https://img.shields.io/badge/Nginx-%23009639.svg?style=flat-square&logo=nginx&logoColor=white)
 - Co-working Tool
     - ![Notion](https://img.shields.io/badge/Notion-%23000000.svg?style=flat-square&logo=notion&logoColor=white)
       ![Postman](https://img.shields.io/badge/Postman-FF6C37?style=flat-square&logo=postman&logoColor=white)
 
+<br>
 
 ## 📄 ER Diagram
+
+<img width="418" alt="KakaoTalk_20230611_085909443" src="https://github.com/HackathonOteam/O_Server/assets/98451999/e189f6a5-4eb6-4872-9687-b741b177b187">
 
 
 <br>
