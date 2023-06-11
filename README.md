@@ -44,7 +44,7 @@
 
 ### **1️⃣ 시장 분석** 
 
-📍 평균 실종 중 정보 양극화와 인구 양극화에 집중하여, '디지털 소외 계층의 노인들'을 고객으로 선정하였습니다. 
+🔔 평균 실종 중 정보 양극화와 인구 양극화에 집중하여, '디지털 소외 계층의 노인들'을 고객으로 선정하였습니다. 
 
 **1. 정보 양극화**
 - IT 환경이 급변하는 상황 속에 고령 인구가 대표적인 디지털 소외 계층으로 주목
@@ -62,7 +62,7 @@
 
 ### **2️⃣ 고객 분석** 
 
-📍 치매 환자와 그 가족의 고통에 주목하여 일기/추억의 리마인드 기능을 기획
+🔔 치매 환자와 그 가족의 고통에 주목하여 일기/추억의 리마인드 기능을 기획
 
 **1. 니즈**
 - 고령층과 IT 환경 사이의 장벽을 음성 변환 기능과 Chat GPT의 요약 기능으로 해결
@@ -133,8 +133,8 @@
       ![RDS](https://img.shields.io/badge/AWS%20RDS-527FFF?style=flat-square&logo=Amazon%20RDS&logoColor=white)
     - ![GitHub Actions](https://img.shields.io/badge/Github%20Actions-%232671E5.svg?style=flat-square&logo=githubactions&logoColor=white)
       ![EC2](https://img.shields.io/badge/AWS%20EC2-FF9900?style=flat-square&logo=Amazon%20EC2&logoColor=white)
-      ![Elastic Beanstalk](https://img.shields.io/badge/Elastic%20Beanstalk-232F3E?style=for-the-badge&logo=Amazon-AWS&logoColor=white)
-      ![Nginx](https://img.shields.io/badge/Nginx-%23009639.svg?style=flat-square&logo=nginx&logoColor=white)
+      ![Elastic Beanstalk](https://img.shields.io/badge/Elastic%20Beanstalk-232F3E?style=flat-square&logo=Amazon-AWS&logoColor=white)
+      ![Nginx](https://img.shields.io/badge/Nginx-%23009639?style=flat-square&logo=nginx&logoColor=white)
 - Co-working Tool
     - ![Notion](https://img.shields.io/badge/Notion-%23000000.svg?style=flat-square&logo=notion&logoColor=white)
       ![Postman](https://img.shields.io/badge/Postman-FF6C37?style=flat-square&logo=postman&logoColor=white)
@@ -146,6 +146,7 @@
 <img width="418" alt="KakaoTalk_20230611_085909443" src="https://github.com/HackathonOteam/O_Server/assets/98451999/e189f6a5-4eb6-4872-9687-b741b177b187">
 
 
+<br>
 <br>
 
 ## 🎨 디자인 무드보드
