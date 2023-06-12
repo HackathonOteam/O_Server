@@ -11,6 +11,8 @@
 
 <br>
 
+[[CMC] 해커톤.pdf](https://github.com/HackathonOteam/O_Server/files/11723250/CMC.pdf)
+
 
 ### 앱명 : 타래
 
