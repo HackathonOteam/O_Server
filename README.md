@@ -123,6 +123,7 @@
 <img width="1920" alt="Slide 16_9 - 4" src="https://github.com/HackathonOteam/O_Server/assets/98451999/4a9e2daf-4485-4efe-ba58-dd52373a3777">
 
 <br>
+<br>
 
 ## :computer: Technology
 
