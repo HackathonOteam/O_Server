@@ -11,8 +11,6 @@
 
 <br>
 
-[[CMC] 해커톤.pdf](https://github.com/HackathonOteam/O_Server/files/11723250/CMC.pdf)
-
 
 ### 앱명 : 타래
 
@@ -112,6 +110,17 @@
 **4. 월별 감정 캘린더 기능**
 - 기록된 일기와 감정 아이콘과 함께 보관됩니다. 이번달 감정을 통해 기록된 일기들을 다시 볼 수 있습니다.
 - 쌓인 기록과 감정은 이번 달의 감정 분석을 만들어 냅니다. 특정 감정을 해당 달에 몇 퍼센트 느꼈는지, 감정 분석을 통해 가장 많이 느낀 감정은 무엇인지 요약해서 보여줍니다. 
+
+<br>
+
+## 💡 구현 화면
+<img width="1920" alt="Slide 16_9 - 1" src="https://github.com/HackathonOteam/O_Server/assets/98451999/bf020913-6c76-4598-b105-d321879fa43b">
+
+<img width="1920" alt="Slide 16_9 - 2" src="https://github.com/HackathonOteam/O_Server/assets/98451999/f4de01f7-443d-45cf-8c10-acc25e710c17">
+
+![Slide 16_9 - 3](https://github.com/HackathonOteam/O_Server/assets/98451999/51bbbb91-1129-4b49-b1cf-ff4f768832bf)
+
+<img width="1920" alt="Slide 16_9 - 4" src="https://github.com/HackathonOteam/O_Server/assets/98451999/4a9e2daf-4485-4efe-ba58-dd52373a3777">
 
 <br>
 
