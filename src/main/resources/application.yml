@@ -26,7 +26,7 @@ swagger:
   url: http://localhost:8080
   desc: for local usages
 
-openaiApiKey: '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'
+openaiApiKey: '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'
 
 ---
 
@@ -60,4 +60,4 @@ swagger:
   documentation:
     enabled: true
 
-openaiApiKey: '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'
+openaiApiKey: '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'
