@@ -26,7 +26,7 @@ swagger:
   url: http://localhost:8080
   desc: for local usages
 
-openaiApiKey: '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'
+openaiApiKey: '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'
 
 ---
 
@@ -55,9 +55,9 @@ spring:
       ddl-auto: validate
 
 swagger:
-  url: http://tarae-env-1.eba-uepb7id2.ap-northeast-2.elasticbeanstalk.com/
+  url: http://tarae-env.eba-uepb7id2.ap-northeast-2.elasticbeanstalk.com
   desc: for real usages
   documentation:
     enabled: true
 
-openaiApiKey: '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'
+openaiApiKey: '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'
