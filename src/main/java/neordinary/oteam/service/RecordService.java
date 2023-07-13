@@ -2,7 +2,10 @@ package neordinary.oteam.service;
 
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import neordinary.oteam.domain.diary.Diary;
+import neordinary.oteam.domain.diary.DiaryRepository;
 import neordinary.oteam.domain.record.RecordRepository;
+import neordinary.oteam.domain.user.User;
 import neordinary.oteam.dto.chatGpt.ChatGptReq;
 import neordinary.oteam.dto.chatGpt.ChatGptRes;
 import neordinary.oteam.dto.record.DiaryRecordRes;
@@ -23,6 +26,7 @@ import java.util.List;
 public class RecordService {
 
     private final RecordRepository recordRepository;
+    private final DiaryRepository diaryRepository;
 
     private final OpenAIService openAIService;
 
@@ -30,13 +34,14 @@ public class RecordService {
     @Transactional
     public DiaryRecordRes addTodayDiary(String name) {
         // name -> id
-        Long userId = recordRepository.findUsername(name);
+        Long userId = recordRepository.findUsername(name).getUserId();
 
         LocalDate today = LocalDate.now();
 
         if (recordRepository.findUserTodayDiary(userId, today) == 0) { // 아직 오늘 다이어리 레코드 생성 안 됐을 때만 레코드 생성
             LocalDateTime createdAt = LocalDateTime.now();
             recordRepository.addUserTodayDiary(createdAt, userId);
+
         }
 
         return new DiaryRecordRes(recordRepository.findUserTodayDiary(userId, today));
@@ -45,18 +50,28 @@ public class RecordService {
     // 레코드 하나 생성
     @Transactional
     public void addOneRecord(String name, String contents, String answer) {
-        Long userId = recordRepository.findUsername(name);
-        Long diaryId = recordRepository.findDiaryId(userId);
 
+        User user = recordRepository.findUsername(name);
+        Diary diary = diaryRepository.findByUserId(user.getUserId());
         LocalDateTime createdAt = LocalDateTime.now();
 
-        recordRepository.addUserRecord(createdAt, contents, answer, diaryId);
+        if (diary == null){
+            Diary diaryy = Diary.create(user);
+            diaryRepository.save(diaryy);
+            recordRepository.addUserRecord(createdAt, contents, answer, diaryy.getDiaryId(), user.getUserId());
+
+        }else {
+            recordRepository.addUserRecord(createdAt, contents, answer, diary.getDiaryId(), user.getUserId());
+        }
+
+        // Long diaryId = recordRepository.findDiaryId(userId);
+        // recordRepository.addUserRecord(createdAt, contents, answer, diaryId);
     }
 
     // 요약 생성
     @Transactional
     public SummaryRes getRecordSummary(String name) {
-        Long userId = recordRepository.findUsername(name);
+        Long userId = recordRepository.findUsername(name).getUserId();
         Long diaryId = recordRepository.findDiaryId(userId);
 
         // name 으로 오늘에 해당하는 record 값 다 가져와서 contents 합치기
@@ -96,7 +111,7 @@ public class RecordService {
 
     // 하루 레코드, 답변 목록 조회
     public List<RecordListRes> findRecordList(String name) {
-        Long userId = recordRepository.findUsername(name);
+        Long userId = recordRepository.findUsername(name).getUserId();
         Long diaryId = recordRepository.findDiaryId(userId);
 
         return recordRepository.findUserRecordList(diaryId);

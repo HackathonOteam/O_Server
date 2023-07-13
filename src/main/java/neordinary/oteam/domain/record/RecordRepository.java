@@ -1,5 +1,6 @@
 package neordinary.oteam.domain.record;
 
+import neordinary.oteam.domain.user.User;
 import neordinary.oteam.dto.record.RecordListRes;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Modifying;
@@ -12,8 +13,8 @@ import java.util.List;
 
 public interface RecordRepository extends JpaRepository<Record, Long> {
 
-    @Query(value = "select user_id from dd_user where name=:name", nativeQuery = true)
-    Long findUsername(@Param("name") String name);
+    @Query(value = "select u from User u where u.name =:name")
+    User findUsername(@Param("name") String name);
 
     // 다이어리 레코드 생성
     @Modifying(clearAutomatically = true)
@@ -28,8 +29,8 @@ public interface RecordRepository extends JpaRepository<Record, Long> {
 
     // 레코드 하나 생성
     @Modifying(clearAutomatically = true)
-    @Query(value = "insert into dd_record(created_at, contents, answer, diary_id) values(:createdAt, :contents, :answer,  :diaryId)", nativeQuery = true)
-    void addUserRecord(@Param("createdAt") LocalDateTime createdAt, @Param("contents") String contents, @Param("answer") String answer, @Param("diaryId") Long diaryId);
+    @Query(value = "insert into dd_record(created_at, contents, answer, diary_id, user_id) values(:createdAt, :contents, :answer,  :diaryId, :userId)", nativeQuery = true)
+    void addUserRecord(@Param("createdAt") LocalDateTime createdAt, @Param("contents") String contents, @Param("answer") String answer, @Param("diaryId") Long diaryId, @Param("userId") Long userId);
 
     // 요약 생성 (오늘 기록한 레코드 데이터 모두 반환)
     @Query(value = "select contents from dd_record where diary_id=:diaryId and DATE(created_at)=:today", nativeQuery = true)

@@ -1,6 +1,8 @@
 package neordinary.oteam.domain.diary;
 
 import com.fasterxml.jackson.databind.ser.Serializers;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import neordinary.oteam.domain.record.Record;
@@ -14,9 +16,11 @@ import java.util.List;
 
 @Getter
 @NoArgsConstructor
+@AllArgsConstructor
 @Table(name = "DD_DIARY")
 @Entity
-public class Diary{
+@Builder
+public class Diary {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -44,5 +48,14 @@ public class Diary{
 
     @OneToMany(mappedBy = "diary", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<Record> records = new ArrayList<>();
+
+    public static Diary create(User user) {
+        return Diary.builder()
+                .diaryDate(LocalDate.now())
+                .user(user)
+                .build();
+
+    }
+
 
 }

@@ -30,6 +30,7 @@ public class UserController {
         User user = userService.create(req.getName());
         UserCreateResponseDto res = UserCreateResponseDto.create(user.getName());
         return new ResponseEntity<>(res, HttpStatus.CREATED);
+
 //        return new ResponseEntity<>(UserCreateResponseDto.create(req.getName()), HttpStatus.CREATED);
     }
 

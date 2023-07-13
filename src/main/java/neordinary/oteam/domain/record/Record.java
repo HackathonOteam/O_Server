@@ -19,6 +19,8 @@ public class Record {
     @Column(name = "record_id")
     private Long recordId;
 
+    private Long userId;
+
     @Column(name = "created_at", nullable = false)
     private LocalDateTime createdAt; // 기록 일시
 
@@ -31,6 +33,11 @@ public class Record {
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "diary_id")
     private Diary diary;
+
+
+    public void updateUserId(Long userId) {
+        this.userId = userId;
+    }
 
 //    @ManyToOne(fetch = FetchType.LAZY)
 //    @JoinColumn(name = "user_id")
