@@ -36,20 +36,13 @@ public class DiaryController {
         final LocalDate today = DateTimeUtils.stringToLocalDate(date);
 
         Diary yearAgoDiary = diaryService.getYearAgo(userName, today);
-        log.info("year ::::::::: " + yearAgoDiary);
         List<Diary> positiveDiaryList = diaryService.getPositiveDiary(userName, today);
-        log.info("possss ::::::::::" + positiveDiaryList.get(0).getDiaryDate());
         List<Diary> anniversaryDiaryList = diaryService.getAnniversaryDiary(userName, today);
-        log.info("annn ::::::" + anniversaryDiaryList.get(0).getDiaryDate());
-
-        Random random = new Random();
-        int poistiveIdx = random.nextInt(positiveDiaryList.size());
-        int anniversaryIdx = random.nextInt(anniversaryDiaryList.size());
 
         return ResponseEntity.ok(DiaryListResponseDto.from(
                 DiaryResponseDto.from(yearAgoDiary),
-                DiaryResponseDto.from(positiveDiaryList.get(poistiveIdx)),
-                DiaryResponseDto.from(anniversaryDiaryList.get(anniversaryIdx))));
+                DiaryResponseDto.from(positiveDiaryList),
+                DiaryResponseDto.from(anniversaryDiaryList)));
     }
 
 

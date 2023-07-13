@@ -7,7 +7,4 @@ import lombok.Getter;
 @AllArgsConstructor
 public enum Emotion {
 
-
-
-
 }

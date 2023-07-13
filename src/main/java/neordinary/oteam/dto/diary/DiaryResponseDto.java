@@ -12,6 +12,7 @@ import neordinary.oteam.domain.diary.Diary;
 
 import java.time.LocalDate;
 import java.util.List;
+import java.util.Random;
 
 @Data
 @Builder
@@ -31,11 +32,43 @@ public class DiaryResponseDto {
     private String contents;
 
     public static DiaryResponseDto from(Diary diary) {
-        return new DiaryResponseDtoBuilder()
-                .date(LocalDate.from(diary.getDiaryDate()))
-                .emotion(diary.getEmotion())
-                .contents(diary.getSummary())
-                .build();
+
+        if(diary == null){
+            return new DiaryResponseDtoBuilder()
+                    .date(null)
+                    .emotion("")
+                    .contents("해당되는 기록이 없습니다.")
+                    .build();
+        } else{
+            return new DiaryResponseDtoBuilder()
+                    .date(LocalDate.from(diary.getDiaryDate()))
+                    .emotion(diary.getEmotion())
+                    .contents(diary.getSummary())
+                    .build();
+        }
+    }
+
+    public static DiaryResponseDto from(List<Diary> diaries) {
+
+        if(diaries.size() == 0){
+            return new DiaryResponseDtoBuilder()
+                    .date(null)
+                    .emotion("")
+                    .contents("해당되는 기록이 없습니다.")
+                    .build();
+        }
+
+        else {
+            Random random = new Random();
+            int idx = random.nextInt(diaries.size());
+
+            return new DiaryResponseDtoBuilder()
+                    .date(LocalDate.from(diaries.get(idx).getDiaryDate()))
+                    .emotion(diaries.get(idx).getEmotion())
+                    .contents(diaries.get(idx).getSummary())
+                    .build();
+        }
+
     }
 
 }
