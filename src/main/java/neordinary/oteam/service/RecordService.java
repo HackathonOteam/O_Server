@@ -57,7 +57,7 @@ public class RecordService {
         Diary diary = diaryRepository.findByUserIdAndDate(user.getUserId(), LocalDate.now());
         LocalDateTime createdAt = LocalDateTime.now();
 
-        log.info("diary :::::::::: " + diary.getRecords());
+        //log.info("diary :::::::::: " + diary.getRecords());
         log.info("createdAT ::::::::: " + createdAt);
         log.info("localdate.now ::::: " + LocalDate.now());
 
