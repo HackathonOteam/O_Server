@@ -29,6 +29,7 @@ public class RecordController {
     @Tag(name = "record")
     @ApiOperation(value = "다이어리 레코드 생성 api")
     @PostMapping("/diary")
+    @Deprecated
     public ResponseEntity<DiaryRecordRes> addRecordDiary(@RequestBody DiaryRecordReq req) {
         return ResponseEntity.ok(recordService.addTodayDiary(req.getName()));
     }
