@@ -21,5 +21,8 @@ public interface DiaryRepository extends JpaRepository<Diary, Long>, DiaryCustom
     @Query("select d from Diary d where d.user.userId =:userId")
     Diary findByUserId(@Param(value = "userId") Long userId);
 
+    @Query("select d from Diary d where d.diaryDate =:now and d.user.userId =:userId")
+    Diary findByUserIdAndDate(@Param(value = "userId") Long userId, @Param(value = "now") LocalDate now);
+
     // findMonthlyDiary(String , YearMonth );
 }

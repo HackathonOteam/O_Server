@@ -11,6 +11,7 @@ import neordinary.oteam.dto.chatGpt.ChatGptRes;
 import neordinary.oteam.dto.record.DiaryRecordRes;
 import neordinary.oteam.dto.record.RecordListRes;
 import neordinary.oteam.dto.record.SummaryRes;
+import net.bytebuddy.asm.Advice;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -52,8 +53,13 @@ public class RecordService {
     public void addOneRecord(String name, String contents, String answer) {
 
         User user = recordRepository.findUsername(name);
-        Diary diary = diaryRepository.findByUserId(user.getUserId());
+        // Diary diary = diaryRepository.findByUserId(user.getUserId());
+        Diary diary = diaryRepository.findByUserIdAndDate(user.getUserId(), LocalDate.now());
         LocalDateTime createdAt = LocalDateTime.now();
+
+        log.info("diary :::::::::: " + diary.getRecords());
+        log.info("createdAT ::::::::: " + createdAt);
+        log.info("localdate.now ::::: " + LocalDate.now());
 
         if (diary == null){
             Diary diaryy = Diary.create(user);
