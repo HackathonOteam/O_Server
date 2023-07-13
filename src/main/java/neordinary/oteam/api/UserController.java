@@ -27,8 +27,6 @@ public class UserController {
     @PostMapping(value="")
     public ResponseEntity<UserCreateResponseDto> createUser(@RequestBody UserCreateRequestDto req){
 
-        //userService.checkNickname(req.getName());
-
         User user = userService.create(req.getName());
         UserCreateResponseDto res = UserCreateResponseDto.create(user.getName());
         return new ResponseEntity<>(res, HttpStatus.CREATED);
