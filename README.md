@@ -1,5 +1,5 @@
 # 🔉 타래
-![간지나는 썸네일](https://github.com/HackathonOteam/O_Server/assets/98451999/07de36be-7f0b-41ce-b829-144506a4042e)
+![간지나는 썸네일](https://github.com/HackathonOteam/O_Server/assets/98451999/70e7063c-0871-4a95-9b7c-12110d7b0d03)
 
 ### **▶️ 대화로 뭉치는 기억일기, 타래**
 
@@ -113,6 +113,18 @@
 
 <br>
 
+## 💡 구현 화면
+<img width="1920" alt="Slide 16_9 - 1" src="https://github.com/HackathonOteam/O_Server/assets/98451999/bf020913-6c76-4598-b105-d321879fa43b">
+
+<img width="1920" alt="Slide 16_9 - 2" src="https://github.com/HackathonOteam/O_Server/assets/98451999/f4de01f7-443d-45cf-8c10-acc25e710c17">
+
+![Slide 16_9 - 3](https://github.com/HackathonOteam/O_Server/assets/98451999/51bbbb91-1129-4b49-b1cf-ff4f768832bf)
+
+<img width="1920" alt="Slide 16_9 - 4" src="https://github.com/HackathonOteam/O_Server/assets/98451999/4a9e2daf-4485-4efe-ba58-dd52373a3777">
+
+<br>
+<br>
+
 ## :computer: Technology
 
 - iOS
@@ -143,14 +155,12 @@
 
 ## 📄 ER Diagram
 
-<img width="418" alt="KakaoTalk_20230611_085909443" src="https://github.com/HackathonOteam/O_Server/assets/98451999/e189f6a5-4eb6-4872-9687-b741b177b187">
-
+<img width="418" alt="KakaoTalk_20230611_085909443" src="https://github.com/HackathonOteam/O_Server/assets/98451999/0a8906c9-30ca-4a6c-885a-6a253acbce04">
 
 <br>
 <br>
 
 ## 🎨 디자인 무드보드
 
-![디자인가이드 설명](https://github.com/HackathonOteam/O_Server/assets/98451999/b502bb3d-2d65-474a-ba81-07ea75289bda)
-
+![디자인가이드 설명](https://github.com/HackathonOteam/O_Server/assets/98451999/dfcbb42f-b224-4e3b-93dd-e5f1f3aa7f90)
 
